@@ -2,6 +2,7 @@
 
 # Define global variables
 tickets = 20
+buyers = 0
 LIMIT = 4
 
 # Function to get and validate user input
@@ -22,6 +23,7 @@ def get_input():
 # Function to process purchases and perform arithmetic
 def process_purchase(quantityDesired: int):
 	global tickets
+	global buyers
 
 	# Check if the desired quantity is within the limits
 	if quantityDesired > 0 and quantityDesired <= 4:
@@ -31,6 +33,7 @@ def process_purchase(quantityDesired: int):
 	
 			# Perform arithmetic
 			tickets -= quantityDesired
+			buyers += 1
 	
 			# Print remaining tickets
 			print(f"\nSuccessfully purchased {quantityDesired} ticket(s)!")
@@ -50,11 +53,13 @@ def process_purchase(quantityDesired: int):
 # Main function
 def main():
 	global tickets
+	global buyers
 
 	while tickets > 0:
 		purchaseAmount = get_input()
 		process_purchase(purchaseAmount)
 
 	print(f"\nAll tickets have sold out!")
+	print(f"\nThere were {buyers} buyers.")
 
 main()
